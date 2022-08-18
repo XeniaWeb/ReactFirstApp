@@ -30,5 +30,5 @@ export function Product({product}: ProductProps) {
             </div>}
 
         </div>
-    )
+    );
 }

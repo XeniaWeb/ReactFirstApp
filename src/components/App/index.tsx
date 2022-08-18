@@ -1,13 +1,19 @@
 import React from "react";
 import './style.css';
 import {Product} from "../Product";
-import {products} from "../../data/products";
+import {useProducts} from "../../hooks/products";
+import {Loader} from "../Loader";
+import {ErrorMessage} from "../ErrorMessage";
 
 export default function App() {
+    const {products, loading, error} = useProducts();
     return (
         <div className="container mx-auto max-w-4xl">
-            <Product product={products[0]}/>
-            <Product product={products[1]}/>
+            {loading && <Loader/>}
+            {error && <ErrorMessage error={error}/>}
+            {products.map(product =>
+                <Product product={product} key={product.id}/>
+            )}
         </div>
-    )
+    );
 };
