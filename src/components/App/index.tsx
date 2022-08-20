@@ -1,19 +1,18 @@
 import React from "react";
 import './style.css';
-import {Product} from "../Product";
-import {useProducts} from "../../hooks/products";
-import {Loader} from "../Loader";
-import {ErrorMessage} from "../ErrorMessage";
+import Navigation from "../Navigation";
+import {Route, Routes} from "react-router-dom";
+import HomePage from "../../pages/HomePage";
+import FavouritesPage from "../../pages/FavouritesPage";
 
 export default function App() {
-    const {products, loading, error} = useProducts();
     return (
-        <div className="container mx-auto max-w-4xl">
-            {loading && <Loader/>}
-            {error && <ErrorMessage error={error}/>}
-            {products.map(product =>
-                <Product product={product} key={product.id}/>
-            )}
-        </div>
+        <>
+            <Navigation/>
+            <Routes>
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="/favourites" element={<FavouritesPage/>}/>
+            </Routes>
+        </>
     );
 };
