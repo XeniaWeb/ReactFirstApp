@@ -16,9 +16,9 @@ export default function HomePage() {
                 {products.map(product =>
                     <Product product={product} key={product.id}/>
                 )}
-                <Modal title="Create Product">
-                    <CreateProduct/>
-                </Modal>
+                {/*<Modal title="Create Product">*/}
+                {/*    <CreateProduct/>*/}
+                {/*</Modal>*/}
             </div>
         </>
 
