@@ -3,26 +3,20 @@ import {IProduct} from "../models/IProduct";
 export const products: IProduct[] = [
     {
         "id": 1,
-        "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-        "price": 109.95,
-        "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-        "category": "men's clothing",
-        "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-        "rating": {
-            "rate": 3.9,
-            "count": 120
-        }
+        "title": "Alice said to herself. 'Shy.",
+        "price": 28928,
+        "description": "Caterpillar. Alice said very politely, 'if I had to run back into the air, I'm afraid, sir' said Alice, (she had grown up,' she said to herself; 'the March Hare had just begun 'Well, of all this grand procession, came THE KING AND QUEEN OF HEARTS.",
+        "categoryId": 1,
+        "image": "https://picsum.photos/id/1098/300/250",
+        "comment": "Autem qui molestiae nulla ut explicabo sed. Exercitationem non quaerat dolorum neque. Ut vel ullam excepturi eaque ab impedit repudiandae."
     },
     {
         "id": 2,
-        "title": "Mens Casual Premium Slim Fit T-Shirts ",
-        "price": 22.3,
-        "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-        "category": "men's clothing",
-        "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-        "rating": {
-            "rate": 4.1,
-            "count": 259
-        }
+        "title": "And they pinched it on both.",
+        "price": 62961,
+        "description": "I had it written up somewhere.' Down, down, down. Would the fall was over. However, when they had been looking at the White Rabbit with pink eyes ran close by it, and finding it very hard indeed to make SOME change in my life!' Just as she swam.",
+        "categoryId": 1,
+        "image": "https://picsum.photos/id/1095/300/250",
+        "comment": "Maxime ipsa sed quia odit praesentium vero officia. Et molestiae quis consectetur qui. Nihil voluptatem neque in voluptatem vel. Earum nihil minus itaque necessitatibus aliquid soluta."
     },
 ]

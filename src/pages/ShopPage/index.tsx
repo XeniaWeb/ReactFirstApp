@@ -1,25 +1,26 @@
 import React, {useState} from "react";
-import {useFabrics} from "../../hooks/fabrics";
+import {useProducts} from "../../hooks/products";
 import {Loader} from "../../components/Loader";
 import {ErrorMessage} from "../../components/ErrorMessage";
 import Modal from "../../components/Modal";
-import CreateFabric from "../../forms/CreateFabric/index";
-import {Fabric} from "../../components/Fabric";
+import CreateProduct from "../../forms/CreateProduct/index";
+import {Product} from "../../components/Product";
 
-export default function HomePage() {
+export default function ShopPage() {
 
-    const {fabrics, loading, error} = useFabrics();
+    const {products, loading, error} = useProducts();
+
     const [modal, setModal] = useState(false);
     return (
         <>
             <div className="container mx-auto pt-16 max-w-4xl flex flex-wrap">
                 {loading && <Loader/>}
                 {error && <ErrorMessage error={error}/>}
-                {fabrics.map(fabric =>
-                    <Fabric fabric={fabric} key={fabric.id}/>
+                {products.map(product =>
+                    <Product product={product} key={product.id}/>
                 )}
-                {modal && <Modal title="Create Fabric">
-                    <CreateFabric/>
+                {modal && <Modal title="Create Product">
+                    <CreateProduct/>
                 </Modal>}
                 {!modal && <button
                     className="px-4 py-2 fixed right-10 bottom-10 bg-amber-600 hover:bg-amber-600/80 text-2xl text-white rounded-lg"

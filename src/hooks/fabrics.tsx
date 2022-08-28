@@ -1,18 +1,18 @@
 import {useEffect, useState} from "react";
-import {IProduct} from "../models/IProduct";
+import {IFabric} from "../models/IFabric";
 import axios, {AxiosError} from "axios";
 
-export function useProducts() {
-    const [products, setProducts] = useState<IProduct[]>([]);
+export function useFabrics() {
+    const [fabrics, setFabrics] = useState<IFabric[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    async function fetchProducts() {
+    async function fetchFabrics() {
         try {
             setError('');
             setLoading(true);
-            const response = await axios.get('https://shop-api/api/v1/products');
-            setProducts(response.data.cards);
+            const response = await axios.get<IFabric[]>('https://fakestoreapi.com/products?limit=6');
+            setFabrics(response.data);
             setLoading(false);
         } catch (e: unknown) {
             const error = e as AxiosError;
@@ -22,8 +22,8 @@ export function useProducts() {
     }
 
     useEffect(() => {
-        fetchProducts();
+        fetchFabrics();
     }, []);
 
-    return {products, loading, error};
+    return {fabrics, loading, error};
 }
