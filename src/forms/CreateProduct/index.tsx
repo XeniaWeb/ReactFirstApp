@@ -4,14 +4,19 @@ import axios from "axios";
 import {ErrorMessage} from "../../components/ErrorMessage";
 
 const productData: IProduct = {
-    title: 'test product',
+    title: '',
     price: 13.5,
-    description: 'lorem ipsum set',
+    description: '',
     image: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
     categoryId: 2,
+    comment: 'test comment'
 }
 
-export default function CreateProduct() {
+interface CreateProductProps {
+    onCreate: (product: IProduct) => void;
+}
+
+export default function CreateProduct({ onCreate }: CreateProductProps) {
     const [productTitle, setProductTitle] = useState('');
     const [errorTitle, setErrorTitle] = useState('');
     const [productDesc, setProductDesc] = useState('');
@@ -25,13 +30,10 @@ export default function CreateProduct() {
         }
         productData.title = productTitle;
         productData.description =productDesc;
-
-        await axios.post<IProduct>('https://fakestoreapi.com/products', productData)
-
-
+        const response = await axios.post<IProduct>('https://shop-api/api/v1/products', productData);
+        onCreate(response.data);
     };
 
-    // const changeTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const changeTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setErrorTitle('');
         setProductTitle(event.target.value);
