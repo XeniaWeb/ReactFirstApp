@@ -1,23 +1,21 @@
 import {useEffect, useState} from "react";
-import {IFabric} from "../models/IFabric";
+import {ICategory} from "../models/ICategory";
 import axios, {AxiosError} from "axios";
 
-export function useFabrics() {
-    const [fabrics, setFabrics] = useState<IFabric[]>([]);
+export function useCategories() {
+    const [listOfCategories, setListOfCategories] = useState<ICategory[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    function addFabric(fabric: IFabric) {
-        setFabrics(prev => [fabric, ...prev])
-    }
 
-    async function fetchFabrics() {
+    async function fetchCategories() {
         try {
             setError('');
             setLoading(true);
-            const response = await axios.get<IFabric[]>('https://fakestoreapi.com/products?limit=6');
-            setFabrics(response.data);
+            const response = await axios.get('https://shop-api/api/v1/categories');
+            setListOfCategories(response.data.cats);
             setLoading(false);
         } catch (e: unknown) {
+            //@todo вывод ошибок
             const error = e as AxiosError;
             setLoading(false);
             setError(error.message);
@@ -25,8 +23,8 @@ export function useFabrics() {
     }
 
     useEffect(() => {
-        fetchFabrics();
+        fetchCategories();
     }, []);
 
-    return {fabrics, loading, error, addFabric};
+    return {listOfCategories, loading, error};
 }
